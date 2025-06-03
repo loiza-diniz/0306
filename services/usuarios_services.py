@@ -14,3 +14,4 @@ def gerar_id():
 def criar_usuario(dados):
     novo_usuario = Usuario(gerar_id(), dados["nome"], dados["email"], dados["senha"])
     usuarios.append(novo_usuario)
+    return novo_usuario

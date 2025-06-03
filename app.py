@@ -1,6 +1,8 @@
 from flask import Flask
+from routes.usuario import usuarios_bp
 
 app = Flask(__name__)
+app.register_blueprint(usuarios_bp)
 
 
 
