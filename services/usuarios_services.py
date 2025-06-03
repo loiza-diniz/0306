@@ -29,3 +29,10 @@ def lista_um_usuario(id):
         if u.id == id:
             return u.to_dict()
     return None
+
+def atualizar_usuario(id):
+    usuario_encontrado = lista_um_usuario(id)
+    if usuario_encontrado:
+        usuario_encontrado["nome"] = novos_dados.get("nome", usuario_encontrado["nome"])
+        usuario_encontrado["email"] = novos_dados["email"]
+        usuario_encontrado["senha"] = novos_dados["senha"]
