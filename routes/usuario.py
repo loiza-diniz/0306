@@ -1,5 +1,6 @@
 from flask import Blueprint, request, jsonify
 from services.usuarios_services import *
+from utils.msg_erro import ERROS
 
 usuarios_bp = Blueprint("usuarios", __name__)
 
@@ -18,7 +19,15 @@ def lista_usuarios():
 def buscar_usuario(id):
     usuario = lista_um_usuario(id)
     if usuario:
-        return jsonify(usuario)
-    else:
-        return jsonify({"mensagem": "Usuário não encontrado"}), 404
-     
+        return jsonify(usuario.to_dict()), 200
+   
+@usuarios_bp.route("/usuarios/<int:id>", methods=["PATCH", "PUT"])
+def atualizar(id):
+    usuario = atualizar_usuario(id, request.json)
+    return jsonify 
+
+@usuarios_bp.route("/usuarios/<int:id>", methods=["DELETE"])
+def delete0(id):
+    sucesso = deletar_usuario(id)
+    if sucesso:
+        return "", 204
